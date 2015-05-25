@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html style="width: 99%;PADDING: 0% 0.1% 0.8% 1%; height: 100%">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script type="text/javascript">
+
+        $(function () {
+            $(".dropdown").on('click', 'li a', function () {
+                $(".btn-droup:first-child").text($(this).text().html);
+                $(".btn-droup:first-child").val($(this).text());
+            });
+        });
+
+        $('#openBtn').click(function () {
+            $('#myModal').modal({ show: true });
+        });
+        $(".dropdown-menu li a").click(function () {
+            var selText = $(this).text();
+            $(this).parents('.btn-group').find('.dropdown-toggle').html(selText + ' <span class="caret ri"></span>');
+        });
+
+        (function (i, s, o, g, r, m) {
+            var a;
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments);
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-45396411-1', 'azurewebsites.net');
+        ga('send', 'pageview');
+
+    </script>
+</head>
+<body style="height: 99%; background-color: #fffff9">
+    <div class="wrapper" style="min-height: 98%; height: auto !important; height: 100%; margin: 0 auto 0">
+        <div class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    @*<img src="~/Content/logo125px.png" />*@
+                </div>
+                <div class="navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Inicío", "Index")</li>                        
+                        <li>@Html.ActionLink("Manual do Usuário", "Index")</li>
+                        <li>@Html.ActionLink("SAC", "Index")</li>
+                    </ul>
+                    @*@Html.Partial("_LoginPartial")*@
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2">
+                    <ul style="width: 110%" class="well well-sm nav nav-pills nav-stacked" id="stacked-menu">
+                        <li role="presentation" class="active">
+                            <a class="nav-container" data-toggle="collapse" data-parent="#stacked-menu" href="#submenu1"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Cadastros<div class="caret-container"><span class="caret arrow"></span></div></a>
+                            <ul class="nav nav-pills nav-stacked collapse" id="submenu1">
+
+                                <li role="presentation">@Html.ActionLink("Usuário", "Index", "Usuario")</li>
+                                <li role="presentation">@Html.ActionLink("Autor", "Index", "Autor")</li>
+                                <li role="presentation">@Html.ActionLink("Museu", "Index", "Museu")</li>
+                                <li role="presentation">@Html.ActionLink("Obra", "Index", "Obra")</li>
+                                <li role="presentation">@Html.ActionLink("Tipo de Obra", "Index", "TipoObra")</li>
+                                <li role="presentation">@Html.ActionLink("Exposição", "Index", "Exposicao")</li>       
+                            </ul>
+                        </li>
+                        
+                    </ul>
+                </div>
+                @RenderBody()
+                
+            </div>
+        </div>
+    </div>
+    <div class="push" style="height: 0"></div>
+    <div class="footer" style="text-align: center; width: 100%">
+        <p>&copy; Copyright @DateTime.Now.Year - OnMuseum Ltda</p>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+
+@*<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script type="text/javascript">
+
+        $(function () {
+            $(".dropdown").on('click', 'li a', function () {
+                $(".btn-droup:first-child").text($(this).text().html);
+                $(".btn-droup:first-child").val($(this).text());
+            });
+        });
+
+        $('#openBtn').click(function () {
+            $('#myModal').modal({ show: true });
+        });
+        $(".dropdown-menu li a").click(function () {
+            var selText = $(this).text();
+            $(this).parents('.btn-group').find('.dropdown-toggle').html(selText + ' <span class="caret ri"></span>');
+        });
+
+        (function (i, s, o, g, r, m) {
+            var a;
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments);
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m);
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-45396411-1', 'azurewebsites.net');
+        ga('send', 'pageview');
+
+    </script>
+</head>
+<body style="height: 99%">
+    <div class="wrapper" style="min-height: 98%; height: auto !important; height: 100%; margin: 0 auto 0">
+        <div class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <img src="~/Content/logo125px.png" />
+                </div>
+                <div class="navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Inicío", "Index")</li>
+                        <li>@Html.ActionLink("Carregamento Mensal", "Index")</li>
+                        <li>@Html.ActionLink("Manual do Usuário", "Index")</li>
+                        <li>@Html.ActionLink("SAC", "Index")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2">
+                    <ul style="width: 110%" class="well well-sm nav nav-pills nav-stacked" id="stacked-menu">
+                        <li role="presentation" class="active">
+                            <a class="nav-container" data-toggle="collapse" data-parent="#stacked-menu" href="#submenu1"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Cadastros<div class="caret-container"><span class="caret arrow"></span></div></a>
+                            <ul class="nav nav-pills nav-stacked collapse" id="submenu1">
+
+                                <li role="presentation">@Html.ActionLink("Usuário", "Index", "Usuario")</li>
+                                <li role="presentation">@Html.ActionLink("Autor", "Index", "Autor")</li>
+                                <li role="presentation">@Html.ActionLink("Museu", "Index", "Museu")</li>
+                                <li role="presentation">@Html.ActionLink("Obra", "Index", "Obra")</li>
+                                <li role="presentation">@Html.ActionLink("Tipo de Obra", "Index", "TipoObra")</li>
+                                <li role="presentation">@Html.ActionLink("Exposição", "Index", "Exposicao")</li>                                
+                            </ul>
+                        </li>                        
+                    </ul>
+                </div>
+                @RenderBody()
+               
+            </div>
+        </div>
+    </div>
+    <div class="push" style="height: 0"></div>
+    <div class="footer" style="text-align: center; width: 100%">
+        <p>&copy; Copyright @DateTime.Now.Year - OnMuseum Ltda</p>
+    </div>
+
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
+</body>
+</html>*@
