@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace OnMuseum.Models.basic
+namespace OnMuseum.Models.Basic
 {
     public class AutorBasic
     {

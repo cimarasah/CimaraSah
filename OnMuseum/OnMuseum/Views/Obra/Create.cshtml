@@ -1,8 +1,8 @@
 ﻿
 
 @using System.Activities.Expressions
-@using OnMuseum.Models.basic
-@model OnMuseum.Models.basic.ObraBasic
+@using OnMuseum.Models.Basic
+@model OnMuseum.Models.Basic.ObraBasic
 
 @{
     ViewBag.Title = "Nova Obra";
@@ -30,55 +30,56 @@
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.Nome, new { @class = "control-label col-md-2" })
+                        @Html.LabelFor(model => model.Nome, new { @class = "control-label col-md-3" })
                         @Html.Label("*", new { @class = "text-danger" })
                         @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
 
-                        <div class="col-md-9">
+                        <div class="col-md-7">
                             @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
                         </div>
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(model => model.AutorId, htmlAttributes: new {@class = "control-label col-md-2"})
+                        @Html.LabelFor(model => model.AutorId, htmlAttributes: new {@class = "control-label col-md-3"})
+                       &nbsp @Html.Label("*", new {@class = "text-danger"})
                         @Html.ValidationMessageFor(model => model.AutorId, "", new {@class = "text-danger"})
-                        @Html.Label("*", new {@class = "text-danger"})
-                        <div class="col-md-4">
+                        
+                        <div class="col-md-5">
                             @Html.DropDownListFor(x => autor, new SelectList(listaAutor, listaAutor.ToString()), "Selecione...", new { @class = "btn-droup btn-default dropdown-toggle btn-group" })
                         </div>
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(model => model.Criacao, new { @class = "control-label col-md-2" })
-                        
+                        @Html.LabelFor(model => model.Criacao, new { @class = "control-label col-md-3" })
+                         <text style="color: gray"><i>Ex: 1990</i></text>
                         @Html.ValidationMessageFor(model => model.Criacao, "", new { @class = "text-danger" })
 
                         <div class="col-md-3">
                             @Html.EditorFor(model => model.Criacao, new { htmlAttributes = new { @class = "form-control" } })
-                            <text style="color: gray"><i>Ex: 1990</i></text>
+                           
                         </div>
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(model => model.Entrada, htmlAttributes: new { @class = "control-label col-md-2" })
-                        &nbsp @Html.Label("*", new { @class = "text-danger " })
+                        @Html.LabelFor(model => model.Entrada, htmlAttributes: new { @class = "control-label col-md-3" })
+                       &nbsp &nbsp @Html.Label("*", new {@class = "text-danger"})
                         @Html.ValidationMessageFor(model => model.Entrada, "", new { @class = "text-danger" })
-                        <div class="col-sm-4">
+                        <div class="col-md-5">
                             @Html.EditorFor(model => model.Entrada, new { htmlAttributes = new { @class = "dropdown btn-droup btn-default" } })
 
                         </div>
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(model => model.Observacao, htmlAttributes: new { @class = "control-label col-md-2" })
-                        @Html.Label("*", new { @class = "text-danger" })
+                        @Html.LabelFor(model => model.Observacao, htmlAttributes: new { @class = "control-label col-md-3" })
+                        
                         @Html.ValidationMessageFor(model => model.Observacao, "", new { @class = "text-danger" })
                         <div class="col-md-9">
                             @Html.TextAreaFor(model => model.Observacao, new { cols = 10, rows = 4, @class = "form-control observacao" })
 
                         </div>
                     </div>
-                    <div class="form-group" style="padding-left: 35%">
-                        <div class="col-md-3 space-btn-salvar">
+                    <div class="form-group" style="padding-left: 27%">
+                        <div class="col-md-4 space-btn-salvar">
                             <input type="submit" style="width: 80px" value="Salvar" class=" btn btn-default btn-primary">
                         </div>
-                        <div class="col-md-3 space-btn-cancelar">
+                        <div class="col-md-4 space-btn-cancelar">
                             <button type="reset" style="width: 80px" class="btn btn-default">Cancelar</button>
                         </div>
                     </div>

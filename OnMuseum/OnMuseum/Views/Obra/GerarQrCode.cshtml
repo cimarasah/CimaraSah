@@ -1,0 +1,49 @@
+﻿@using OnMuseum.Models.Basic
+
+@model OnMuseum.Models.Basic.ObraBasic
+
+@{
+    ViewBag.Title = "Qr Code da Obra";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ObraBasic obra = (ObraBasic) Session["Obra"];
+    string idObra = Model.Id.ToString();
+}
+
+<div class="col-md-10">
+    <div class="panel panel-default">
+
+        <!-- Default panel contents -->
+        <div class="panel-heading text-center">
+            @Html.Label("Qr Code Gerado")
+        </div>
+        <div class="panel-gerencia text-center">
+            <div class="form-horizontal">
+                <br/>                
+                <div>
+                    @Html.Label("Obra: ")
+                    @Html.Label(@Model.Nome)
+                </div>
+                <div>
+                    @Html.Label("ID: ")
+                    @Html.Label(@idObra)
+                </div>
+                <br/>
+                <br/>
+
+                <div>
+                    <img width="50%" src="@Url.Action("GerarQrCode")" alt="qr code"/>
+                </div>
+                <br/>
+                <br/>
+
+            </div>
+            <div class="text-center">
+                @Html.ActionLink("voltar", "Create")
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

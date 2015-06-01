@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using OnMuseum.Models.Basic;
+using OnMuseum.Models.Repositorio;
 
 namespace OnMuseum.Controllers
 {
     public class ObraController : Controller
     {
+        private static byte[] byteArray;
+        ObraRepositorio repositorio = new ObraRepositorio();
         // GET: Obra
         public ActionResult Index()
         {
@@ -28,20 +33,28 @@ namespace OnMuseum.Controllers
 
         // POST: Obra/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(ObraBasic obraBasic)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                obraBasic = repositorio.GerarIdObra(obraBasic);
+                Image qrCodeImage = repositorio.GerarQR(obraBasic.Id, 5);
+                ImageConverter converter = new ImageConverter();
+                byteArray = (byte[])converter.ConvertTo(qrCodeImage, typeof(byte[]));
+                Session["Obra"] = obraBasic;
+                return View("GerarQrCode", obraBasic);
             }
             catch
             {
                 return View();
             }
         }
+        public ActionResult GerarQrCode(ObraBasic obra)
+        {
 
+            return File(byteArray, "image/jpeg");
+        } 
+        
         // GET: Obra/Edit/5
         public ActionResult Edit(int id)
         {
