@@ -5,15 +5,18 @@ using System.Linq;
 using System.Web;
 using OnMuseum.Models.Basic;
 using MessagingToolkit.QRCode.Codec;
+using OnMuseum.Models.DAO;
 
 namespace OnMuseum.Models.Repositorio
 {
     public class ObraRepositorio
     {
+        ObraDAO dao = new ObraDAO();
         Random randNum = new Random();
-        public ObraBasic GerarIdObra(ObraBasic obra)
-        {           
-            obra.Id = randNum.Next(10000, 100000);
+        public ObraBasic InserirObra(ObraBasic obra)
+        {                      
+            obra.AutorId = 1;
+            dao.Inserir(obra);
             return obra;
         }
         public Image GerarQR(int idObra, int qrlevel)

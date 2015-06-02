@@ -37,12 +37,13 @@ namespace OnMuseum.Controllers
         {
             try
             {
-                obraBasic = repositorio.GerarIdObra(obraBasic);
-                Image qrCodeImage = repositorio.GerarQR(obraBasic.Id, 5);
-                ImageConverter converter = new ImageConverter();
-                byteArray = (byte[])converter.ConvertTo(qrCodeImage, typeof(byte[]));
-                Session["Obra"] = obraBasic;
-                return View("GerarQrCode", obraBasic);
+                obraBasic = repositorio.InserirObra(obraBasic);
+                //Image qrCodeImage = repositorio.GerarQR(obraBasic.Id, 5);
+                //ImageConverter converter = new ImageConverter();
+                //byteArray = (byte[])converter.ConvertTo(qrCodeImage, typeof(byte[]));
+                //Session["Obra"] = obraBasic;
+                //return View("GerarQrCode", obraBasic);
+                return View();
             }
             catch
             {
